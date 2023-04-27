@@ -23,7 +23,7 @@ if (drink == "yes" || drink == "Yes"){
         total[1] = 1;
     } else if (order[1] == 'medium' || order[1] == 'Medium'){
         total[1] = 1.75;
-    } else if (order[1] == 'large' || order[1] == 'Large'){
+    } else if (order[1] == 'large' || order[1] == 'Large') {
         total[1] = 2.25;
     }
 } else {
@@ -56,8 +56,36 @@ console.log(order);
 console.log(`total: $${total[0]+total[1]+total[2]}`);
 
 sauces = readline.question('would you like a ketchup? (yes/no): ');
-if (sauces == "yes" || sauces == "Yes")
-    console.log('one ketchup packet costs $0.25');
-total[3] = Number(readline.question('how many would you like: '))*.25;
+    if (sauces == "yes" || sauces == "Yes")
+        console.log('one ketchup packet costs $0.25');
+    total[3] = Number(readline.question('how many would you like: '))*.25;
+ else {
+    total[3] = 0;
+}
+
+white = readline.question('would you like a Ranch? (yes/no): ');
+if (white == "yes" || white == "Yes")
+    console.log('one Ranch packet costs $0.10');
+total[5] = Number(readline.question('how many would you like: '))*.10;
+ else {
+    total[5] = 0;
+}
+
+brown = readline.question('would you like a Barbecue? (yes/no): ');
+if (brown == "yes" || brown == "Yes")
+    console.log('one Barbecue packet costs $0.50');
+total[6] = Number(readline.question('how many would you like: '))*.50;
+ else {
+    total[6] = 0;
+}
+
+if (total[0] >= 1 && total[1] >= 1 && total[2] >= 1){
+    total[4] = -1;
+} else {
+    total[4] = 0;
+}
 console.log(order);
-console.log(`total: $${total[0]+total[1]+total[2]+total[3]}`);
+
+// next steps Daniel
+total[7] = (((total[0]+total[1]+total[2]+total[3]+total[4]+total[5]+total[6])*.07)+(total[0]+total[1]+total[2]+total[3]+total[4]+total[5]+total[6])).toFixed(2);
+console.log(`total: $${total[7]}`);
